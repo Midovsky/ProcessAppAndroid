@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_demande">
+
+    <fragment
+        android:id="@+id/nav_demande"
+        android:name="com.example.processapp.ui.WkfFragment"
+        android:label="@string/menu_demandes"
+        tools:layout="@layout/fragment_demandes">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.processapp.ui.demandes.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_demande" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_suivi"
+        android:name="com.example.processapp.ui.suivi.SuiviFragment"
+        android:label="@string/menu_suivi"
+        tools:layout="@layout/fragment_suivi" />
+
+    <fragment
+        android:id="@+id/nav_autre1"
+        android:name="com.example.processapp.ui.autre1.Autre1Fragment"
+        android:label="@string/menu_autre1"
+        tools:layout="@layout/fragment_autre1" />
+
+    <fragment
+        android:id="@+id/nav_autre2"
+        android:name="com.example.processapp.ui.autre2.Autre2Fragment"
+        android:label="Autre 2"
+        tools:layout="@layout/fragment_autre2" />
+</navigation>

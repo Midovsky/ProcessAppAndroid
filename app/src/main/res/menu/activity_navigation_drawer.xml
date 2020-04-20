@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_demande"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_demandes" />
+        <item
+            android:id="@+id/nav_suivi"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_suivi" />
+        <item
+            android:id="@+id/nav_autre1"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_autre1" />
+        <item
+            android:id="@+id/nav_autre2"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_autre2" />
+    </group>
+</menu>
