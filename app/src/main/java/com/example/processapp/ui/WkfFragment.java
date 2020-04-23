@@ -1,6 +1,9 @@
 package com.example.processapp.ui;
 
 import android.content.Context;
+
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,13 +11,27 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.processapp.R;
+import com.example.processapp.model.Task;
 import com.example.processapp.model.Wkf;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +48,10 @@ public class WkfFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    private String token;
+    public List<Task> lTask = new ArrayList<Task>() ;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -56,6 +77,16 @@ public class WkfFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
+
+
+        SharedPreferences result = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        token = result.getString("token","no token found");
+
+
+
+        Log.d("task",lTask.toString());
+
     }
 
     @Override
@@ -73,13 +104,14 @@ public class WkfFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
            // recyclerView.setAdapter(new MyWkfRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-            List<Wkf> lWkf = new ArrayList<Wkf>() ;
-            lWkf.add(new Wkf("id0","process01") );
-            lWkf.add(new Wkf("id2","process02") );
-            lWkf.add(new Wkf("id3","process03") );
 
-            MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lWkf,mListener);
+
+
+            SearchProcessTask searchProcessTask = new SearchProcessTask();
+            searchProcessTask.execute();
+            MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener);
             recyclerView.setAdapter(myWkfRecyclerViewAdapter);
+            myWkfRecyclerViewAdapter.notifyDataSetChanged();
         }
         return view;
     }
@@ -114,6 +146,77 @@ public class WkfFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Wkf item);
+        void onListFragmentInteraction(Task item);
+    }
+
+    public class SearchProcessTask extends AsyncTask<Void, Integer, String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+
+                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/case/start-cases");
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Authorization","Bearer "+token);
+                connection.connect();
+
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+
+                    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                        StringBuffer stringBuffer = new StringBuffer();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            stringBuffer.append(line+"/n");
+                        }
+                        connection.getInputStream().close();
+                        Log.e("response",stringBuffer.toString());
+                        return stringBuffer.toString();
+                    }
+
+                } else {
+                    return "Error in connexion";
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+                Log.d("test1",s);
+
+            try {
+
+                JSONArray jsonArray = new JSONArray(s);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    String tas_uid = obj.getString("tas_uid");
+                    String pro_title = obj.getString("pro_title");
+                    String pro_uid = obj.getString("pro_uid");
+
+                    Task task = new Task(tas_uid,pro_title,pro_uid);
+
+                    lTask.add(task);
+                }
+                Log.d("test3",lTask.toString());
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
+
+

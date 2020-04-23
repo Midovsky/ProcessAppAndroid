@@ -171,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         connection.getInputStream().close();
                         publishProgress(10);
+                        Log.e("responselogin",stringBuffer.toString());
                         return stringBuffer.toString();
                     }
 

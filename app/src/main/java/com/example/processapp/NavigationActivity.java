@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
-import com.example.processapp.model.Wkf;
+import com.example.processapp.model.Task;
 import com.example.processapp.ui.WkfFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -77,7 +77,7 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     }
 
     @Override
-    public void onListFragmentInteraction(Wkf item) {
+    public void onListFragmentInteraction(Task item) {
 
     }
 }

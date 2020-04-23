@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.processapp.model.Task;
 import com.example.processapp.ui.WkfFragment.OnListFragmentInteractionListener;
 import com.example.processapp.ui.dummy.DummyContent.DummyItem;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.example.processapp.R;
-import com.example.processapp.model.Wkf;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -22,13 +21,13 @@ import com.example.processapp.model.Wkf;
  */
 public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Wkf> mValues;
+    private final List<Task> mValues;
     private final OnListFragmentInteractionListener mListener;
 
 
 
 
-    public MyWkfRecyclerViewAdapter(List<Wkf> items, OnListFragmentInteractionListener listener) {
+    public MyWkfRecyclerViewAdapter(List<Task> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -43,8 +42,9 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getId());
-        holder.mContentView.setText(mValues.get(position).getName());
+        holder.mTasUidView.setText(mValues.get(position).getTas_uid());
+        holder.mIdView.setText(mValues.get(position).getPro_uid());
+        holder.mContentView.setText(mValues.get(position).getPro_title());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +66,16 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
+        public final TextView mTasUidView;
         public final TextView mContentView;
-        public Wkf mItem;
+        public Task mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mTasUidView = (TextView) view.findViewById(R.id.tasuid);
         }
 
         @Override
