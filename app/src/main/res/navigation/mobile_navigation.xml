@@ -9,13 +9,13 @@
         android:id="@+id/nav_demande"
         android:name="com.example.processapp.ui.WkfFragment"
         android:label="@string/menu_demandes"
-        tools:layout="@layout/fragment_demandes">
+        tools:layout="@layout/fragment_wkf">
 
-        <action
+<!--        <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
+            app:destination="@id/nav_home_second" />-->
     </fragment>
-    <fragment
+<!--    <fragment
         android:id="@+id/nav_home_second"
         android:name="com.example.processapp.ui.demandes.HomeSecondFragment"
         android:label="@string/home_second"
@@ -27,7 +27,7 @@
         <argument
             android:name="myArg"
             app:argType="string" />
-    </fragment>
+    </fragment>-->
 
     <fragment
         android:id="@+id/nav_suivi"

@@ -5,11 +5,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.processapp.model.Task;
 import com.example.processapp.ui.WkfFragment.OnListFragmentInteractionListener;
-import com.example.processapp.ui.dummy.DummyContent.DummyItem;
+
 
 import java.util.List;
 import com.example.processapp.R;
@@ -56,7 +57,20 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                 }
             }
         });
+
+        holder.mContentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != mListener) {
+                    // Notify the active callbacks interface (the activity, if the
+                    // fragment is attached to one) that an item has been selected.
+                    mListener.onButtonClicked(holder.mContentView);
+                }
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -67,15 +81,16 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
         public final View mView;
         public final TextView mIdView;
         public final TextView mTasUidView;
-        public final TextView mContentView;
+        public final Button mContentView;
         public Task mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
             mTasUidView = (TextView) view.findViewById(R.id.tasuid);
+            mContentView = (Button) view.findViewById(R.id.content);
+
         }
 
         @Override

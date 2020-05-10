@@ -1,18 +1,26 @@
 package com.example.processapp;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.processapp.model.Task;
+import com.example.processapp.ui.ReserveFragment;
 import com.example.processapp.ui.WkfFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -45,7 +53,7 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations. (pour être considiérée dans le hamburger)
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_demande, R.id.nav_suivi, R.id.nav_autre1,  R.id.nav_autre2)
+                R.id.nav_demande, R.id.nav_suivi, R.id.nav_autre1, R.id.nav_autre2)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -55,7 +63,7 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
         Intent intent = getIntent();
 
         SharedPreferences result = getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        token = result.getString("token","no token found");
+        token = result.getString("token", "no token found");
 
 
         //token= intent.getStringExtra("token");
@@ -79,5 +87,30 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     @Override
     public void onListFragmentInteraction(Task item) {
 
+
     }
+
+    @Override
+    public void onButtonClicked(Button demande) {
+
+        demande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+/*               ReserveFragment reserveFragment = new ReserveFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_demande, reserveFragment);
+                fragmentTransaction.commit();*/
+                Log.d("click", "mcontent");
+
+            }
+        });
+
+    }
+
+
+
+
+
 }

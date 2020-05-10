@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.processapp.R;
 import com.example.processapp.model.Task;
@@ -78,16 +79,14 @@ public class WkfFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
 
-
-
         SharedPreferences result = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
         token = result.getString("token","no token found");
-
-
 
         Log.d("task",lTask.toString());
 
     }
+
+    
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -105,14 +104,14 @@ public class WkfFragment extends Fragment {
             }
            // recyclerView.setAdapter(new MyWkfRecyclerViewAdapter(DummyContent.ITEMS, mListener));
 
-
-
+    
             SearchProcessTask searchProcessTask = new SearchProcessTask();
             searchProcessTask.execute();
             MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener);
             recyclerView.setAdapter(myWkfRecyclerViewAdapter);
             myWkfRecyclerViewAdapter.notifyDataSetChanged();
         }
+
         return view;
     }
 
@@ -147,6 +146,7 @@ public class WkfFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Task item);
+        void onButtonClicked(Button demande); // You may want to edit the arguments of the method
     }
 
     public class SearchProcessTask extends AsyncTask<Void, Integer, String> {
