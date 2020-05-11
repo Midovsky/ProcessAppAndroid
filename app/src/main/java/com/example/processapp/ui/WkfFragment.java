@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +21,6 @@ import android.widget.Button;
 
 import com.example.processapp.R;
 import com.example.processapp.model.Task;
-import com.example.processapp.model.Wkf;
 
 
 import org.json.JSONArray;
@@ -35,7 +36,6 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -61,15 +61,7 @@ public class WkfFragment extends Fragment {
     public WkfFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static WkfFragment newInstance(int columnCount) {
-        WkfFragment fragment = new WkfFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +78,6 @@ public class WkfFragment extends Fragment {
 
     }
 
-    
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,14 +93,15 @@ public class WkfFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-           // recyclerView.setAdapter(new MyWkfRecyclerViewAdapter(DummyContent.ITEMS, mListener));
 
-    
+
             SearchProcessTask searchProcessTask = new SearchProcessTask();
             searchProcessTask.execute();
-            MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener);
+            MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
             recyclerView.setAdapter(myWkfRecyclerViewAdapter);
             myWkfRecyclerViewAdapter.notifyDataSetChanged();
+
+
         }
 
         return view;
@@ -133,6 +125,15 @@ public class WkfFragment extends Fragment {
         mListener = null;
     }
 
+    public void test(){
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
+
+
+    }
+
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -146,7 +147,7 @@ public class WkfFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Task item);
-        void onButtonClicked(Button demande); // You may want to edit the arguments of the method
+        void onButtonClicked(Button demande);
     }
 
     public class SearchProcessTask extends AsyncTask<Void, Integer, String> {
@@ -170,7 +171,6 @@ public class WkfFragment extends Fragment {
                             stringBuffer.append(line+"/n");
                         }
                         connection.getInputStream().close();
-                        Log.e("response",stringBuffer.toString());
                         return stringBuffer.toString();
                     }
 

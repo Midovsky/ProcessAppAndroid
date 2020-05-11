@@ -11,7 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/cinTxt"
@@ -21,17 +23,19 @@
             android:text="CIN" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/cin"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:selectAllOnFocus="true"
-            android:text="cin" />
+            android:inputType="number"
+            android:selectAllOnFocus="true" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/respTxt"
@@ -42,17 +46,18 @@
             android:text="Responsable du club" />
 
         <EditText
-            android:id="@+id/email2"
+            android:id="@+id/resp"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:selectAllOnFocus="true"
-            android:text="cin" />
+            android:selectAllOnFocus="true" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/clubTxt"
@@ -69,14 +74,101 @@
             android:entries="@array/clubnames"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/raisonTxt"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="0dp"
+            android:text="Raison" />
+
+        <Spinner
+            android:id="@+id/raisonSpinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/reasons_reservation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Date"/>
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="(YYYY-MM-DD)"
+            android:inputType="date" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/txtVP"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Video Projecteur" />
+
+        <RadioGroup
+            android:id="@+id/rdGrp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+
+                <RadioButton
+                    android:id="@+id/rdOui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Oui"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rdNon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Non"
+                    android:checked="true"
+                    />
+        </RadioGroup>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp"
-        android:text="display selected item" />
+        android:layout_marginBottom="0dp"
+        android:text="Envoyer demande" />
 
 
 </LinearLayout>

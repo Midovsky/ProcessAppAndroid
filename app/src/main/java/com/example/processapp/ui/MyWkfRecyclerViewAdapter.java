@@ -24,13 +24,15 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
 
     private final List<Task> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private final WkfFragment mFragment;
 
 
 
 
-    public MyWkfRecyclerViewAdapter(List<Task> items, OnListFragmentInteractionListener listener) {
+    public MyWkfRecyclerViewAdapter(List<Task> items, OnListFragmentInteractionListener listener, WkfFragment fragment) {
         mValues = items;
         mListener = listener;
+        mFragment = fragment;
     }
 
     @Override
@@ -53,7 +55,10 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
+
                     mListener.onListFragmentInteraction(holder.mItem);
+                    // navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
+
                 }
             }
         });
@@ -65,6 +70,7 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     mListener.onButtonClicked(holder.mContentView);
+                    mFragment.test();
                 }
             }
         });

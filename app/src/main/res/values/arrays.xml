@@ -7,4 +7,9 @@
         <item>@string/beblisi</item>
         <item>@string/securinets</item>
     </string-array>
+
+    <string-array name="reasons_reservation">
+        <item>@string/réunion</item>
+        <item>@string/formation</item>
+    </string-array>
 </resources>

@@ -14,6 +14,15 @@
 <!--        <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
             app:destination="@id/nav_home_second" />-->
+        <action
+            android:id="@+id/action_nav_demande_to_nav_suivi"
+            app:destination="@id/nav_suivi" />
+        <action
+            android:id="@+id/action_nav_demande_to_nav_autre2"
+            app:destination="@id/nav_autre2" />
+        <action
+            android:id="@+id/action_nav_demande_to_reserveFragment2"
+            app:destination="@id/reserveFragment2" />
     </fragment>
 <!--    <fragment
         android:id="@+id/nav_home_second"
@@ -46,4 +55,8 @@
         android:name="com.example.processapp.ui.autre2.Autre2Fragment"
         android:label="Autre 2"
         tools:layout="@layout/fragment_autre2" />
+    <fragment
+        android:id="@+id/reserveFragment2"
+        android:name="com.example.processapp.ui.ReserveFragment"
+        android:label="ReserveFragment" />
 </navigation>

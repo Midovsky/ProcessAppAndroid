@@ -93,16 +93,20 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     @Override
     public void onButtonClicked(Button demande) {
 
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         demande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+             navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
 
 /*               ReserveFragment reserveFragment = new ReserveFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_demande, reserveFragment);
                 fragmentTransaction.commit();*/
-                Log.d("click", "mcontent");
+               // Log.d("click", "mcontent");
 
             }
         });

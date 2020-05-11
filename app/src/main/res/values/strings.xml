@@ -25,6 +25,13 @@
     <string name="securinets">Securinets</string>
     <string name="codex">Codex</string>
 
+    <!--Reason Reservation -->
+    <string name="choix_raison">Choisir la raisoon</string>
+    <string name="réunion">réunion</string>
+    <string name="formation">formation</string>
+
+
+
     <string name="menu_demandes">Demandes</string>
     <string name="menu_suivi">Suivi</string>
     <string name="menu_autre1">Autre 1</string>
