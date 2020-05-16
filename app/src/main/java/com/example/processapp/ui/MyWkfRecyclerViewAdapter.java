@@ -2,11 +2,13 @@ package com.example.processapp.ui;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.processapp.model.Task;
 import com.example.processapp.ui.WkfFragment.OnListFragmentInteractionListener;
@@ -14,6 +16,7 @@ import com.example.processapp.ui.WkfFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 import com.example.processapp.R;
+import com.example.processapp.ui.login.LoginActivity;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -59,6 +62,7 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                     mListener.onListFragmentInteraction(holder.mItem);
                     // navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
 
+
                 }
             }
         });
@@ -70,7 +74,20 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     mListener.onButtonClicked(holder.mContentView);
-                    mFragment.test();
+
+
+
+
+                    CharSequence text = holder.mContentView.getText();
+                    if ("Demande de réservation de salle (Remplir Demande de réservation)".equals(text)) {
+                        mFragment.displayFragmentSalle();
+
+                    } else if ("Demande attestation de présence (Remplir Demande d'attestation Présence)".equals(text)) {
+                        mFragment.displayFragmentPresence();
+
+                    } else if ("Demande de Double Correction (Remplir la demandede double correction)".equals(text)) {
+                        Toast.makeText(v.getContext(), "Not ready yet", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

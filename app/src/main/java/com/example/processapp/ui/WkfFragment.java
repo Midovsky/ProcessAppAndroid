@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -84,6 +86,14 @@ public class WkfFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wkf_list, container, false);
 
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -95,18 +105,19 @@ public class WkfFragment extends Fragment {
             }
 
 
-            SearchProcessTask searchProcessTask = new SearchProcessTask();
-            searchProcessTask.execute();
+
+            if (lTask.isEmpty()){
+                SearchProcessTask searchProcessTask = new SearchProcessTask();
+                searchProcessTask.execute();
+
+            }
+
             MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
             recyclerView.setAdapter(myWkfRecyclerViewAdapter);
-            myWkfRecyclerViewAdapter.notifyDataSetChanged();
-
+            //myWkfRecyclerViewAdapter.notifyDataSetChanged();
 
         }
-
-        return view;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -125,25 +136,29 @@ public class WkfFragment extends Fragment {
         mListener = null;
     }
 
-    public void test(){
+    public void displayFragmentSalle(){
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
 
+    }
+
+    public void displayFragmentPresence() {
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.action_nav_demande_to_attestationPresence);
 
     }
 
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+        /**
+         * This interface must be implemented by activities that contain this
+         * fragment to allow an interaction in this fragment to be communicated
+         * to the activity and potentially other fragments contained in that
+         * activity.
+         * <p/>
+         * See the Android Training lesson <a href=
+         * "http://developer.android.com/training/basics/fragments/communicating.html"
+         * >Communicating with Other Fragments</a> for more information.
+         */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Task item);
@@ -171,6 +186,7 @@ public class WkfFragment extends Fragment {
                             stringBuffer.append(line+"/n");
                         }
                         connection.getInputStream().close();
+                        Log.d("ttt",stringBuffer.toString());
                         return stringBuffer.toString();
                     }
 

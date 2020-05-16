@@ -74,6 +74,7 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation, menu);
+
         return true;
     }
 
@@ -99,14 +100,6 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
             @Override
             public void onClick(View v) {
 
-             navController.navigate(R.id.action_nav_demande_to_reserveFragment2);
-
-/*               ReserveFragment reserveFragment = new ReserveFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_demande, reserveFragment);
-                fragmentTransaction.commit();*/
-               // Log.d("click", "mcontent");
 
             }
         });

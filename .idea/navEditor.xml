@@ -8,6 +8,27 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="attestationPresence">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-800" />
+                            <option name="y" value="-748" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_attestationPresence_to_nav_demande">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="nav_autre1">
                     <value>
                       <LayoutPositions>
@@ -43,12 +64,27 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_nav_demande_to_attestationPresence">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_demande_to_loginActivity2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_nav_demande_to_nav_autre2">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_nav_demande_to_nav_suivi">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_demande_to_reserveFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -70,6 +106,34 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="navigation">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1002" />
+                            <option name="y" value="-355" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="loginActivity2">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="12" />
+                                      <option name="y" value="12" />
+                                    </Point>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="reserveFragment2">
                     <value>
                       <LayoutPositions>
@@ -78,6 +142,15 @@
                             <option name="x" value="-459" />
                             <option name="y" value="-719" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_reserveFragment2_to_nav_demande">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

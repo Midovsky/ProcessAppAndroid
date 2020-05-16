@@ -23,6 +23,16 @@
         <action
             android:id="@+id/action_nav_demande_to_reserveFragment2"
             app:destination="@id/reserveFragment2" />
+        <action
+            android:id="@+id/action_nav_demande_to_attestationPresence"
+            app:destination="@id/attestationPresence" />
+        <action
+            android:id="@+id/action_nav_demande_to_loginActivity2"
+            app:destination="@id/loginActivity2"
+           />
+        <action
+            android:id="@+id/action_nav_demande_to_nav_autre1"
+            app:destination="@id/nav_autre1" />
     </fragment>
 <!--    <fragment
         android:id="@+id/nav_home_second"
@@ -58,5 +68,33 @@
     <fragment
         android:id="@+id/reserveFragment2"
         android:name="com.example.processapp.ui.ReserveFragment"
-        android:label="ReserveFragment" />
+        android:label="ReserveFragment"
+        tools:layout="@layout/fragment_reserve">
+        <action
+            android:id="@+id/action_reserveFragment2_to_nav_demande"
+            app:destination="@id/nav_demande" />
+    </fragment>
+    <fragment
+        android:id="@+id/attestationPresence"
+        android:name="com.example.processapp.ui.AttestationPresence"
+        android:label="AttestationPresence"
+        tools:layout="@layout/fragment_attestation_presence">
+        <action
+            android:id="@+id/action_attestationPresence_to_nav_demande"
+            app:destination="@id/nav_demande" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity2"
+        android:name="com.example.processapp.ui.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login"
+        >
+       <!-- <action
+            android:id="@+id/action_loginActivity2_to_nav_demande"
+            app:destination="@id/nav_demande"
+            app:popUpTo="@id/loginActivity2"
+            app:popUpToInclusive="true"/>-->
+    </activity>
+
+
 </navigation>
