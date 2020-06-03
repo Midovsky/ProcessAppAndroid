@@ -29,13 +29,46 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="doubleCorrection">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-82" />
+                            <option name="y" value="-268" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_doubleCorrection_to_nav_demande">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="loginActivity2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-781" />
+                            <option name="y" value="101" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="nav_autre1">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-85" />
-                            <option name="y" value="56" />
+                            <option name="x" value="-121" />
+                            <option name="y" value="64" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -46,8 +79,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-100" />
-                            <option name="y" value="-297" />
+                            <option name="x" value="-197" />
+                            <option name="y" value="-552" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -58,8 +91,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-640" />
-                            <option name="y" value="-346" />
+                            <option name="x" value="-768" />
+                            <option name="y" value="-268" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -69,7 +102,17 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_nav_demande_to_doubleCorrection">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_nav_demande_to_loginActivity2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_demande_to_nav_autre1">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -99,37 +142,9 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-105" />
-                            <option name="y" value="-637" />
+                            <option name="x" value="-83" />
+                            <option name="y" value="-845" />
                           </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="navigation">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-1002" />
-                            <option name="y" value="-355" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="loginActivity2">
-                              <value>
-                                <LayoutPositions>
-                                  <option name="myPosition">
-                                    <Point>
-                                      <option name="x" value="12" />
-                                      <option name="y" value="12" />
-                                    </Point>
-                                  </option>
-                                </LayoutPositions>
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -139,8 +154,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-459" />
-                            <option name="y" value="-719" />
+                            <option name="x" value="-478" />
+                            <option name="y" value="-814" />
                           </Point>
                         </option>
                         <option name="myPositions">

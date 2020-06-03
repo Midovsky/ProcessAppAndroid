@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.AttestationPresence">
+        tools:context=".ui.DoubleCorrection">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,76 +33,6 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:selectAllOnFocus="true" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/nomTxt"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="0dp"
-                android:text="Nom" />
-
-            <EditText
-                android:id="@+id/nom"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:selectAllOnFocus="true" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp">
-
-
-            <TextView
-                android:id="@+id/txtDate"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="0dp"
-                android:text="Date de naissance" />
-
-            <EditText
-                android:id="@+id/date"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="(YYYY-MM-DD)"
-                android:inputType="date" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/lieuTxt"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="0dp"
-                android:text="Lieu de naissance" />
-
-            <EditText
-                android:id="@+id/lieu"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
                 android:selectAllOnFocus="true" />
         </LinearLayout>
 
@@ -136,6 +66,28 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/nomEtudiant"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Nom Etudiant" />
+
+            <EditText
+                android:id="@+id/nom"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
                 android:id="@+id/specialiteTxt"
                 android:layout_width="90dp"
                 android:layout_height="match_parent"
@@ -148,6 +100,30 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp">
+
+
+            <TextView
+                android:id="@+id/txtMail"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -171,6 +147,118 @@
                 android:layout_height="wrap_content"
                 android:selectAllOnFocus="true" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/matiereTxt"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Matiere" />
+
+            <EditText
+                android:id="@+id/matiere"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/typeTxt"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Type Epreuve" />
+
+            <Spinner
+                android:id="@+id/typeEpreuve"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/type_epreuve" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sessionTxt"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Session" />
+
+            <Spinner
+                android:id="@+id/session"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/session" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/enseignantTxt"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Enseignant" />
+
+            <EditText
+                android:id="@+id/enseignant"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/commentaireTxt"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:text="Commentaire" />
+
+            <EditText
+                android:id="@+id/commentaire"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/button"

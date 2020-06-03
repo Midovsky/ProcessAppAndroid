@@ -148,8 +148,14 @@ public class WkfFragment extends Fragment {
 
     }
 
+    public void displayFragmentCorrection() {
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.action_nav_demande_to_doubleCorrection);
 
-        /**
+    }
+
+
+    /**
          * This interface must be implemented by activities that contain this
          * fragment to allow an interaction in this fragment to be communicated
          * to the activity and potentially other fragments contained in that

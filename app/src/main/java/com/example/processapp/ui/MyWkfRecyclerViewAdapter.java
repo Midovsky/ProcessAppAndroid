@@ -76,17 +76,17 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                     mListener.onButtonClicked(holder.mContentView);
 
 
-
-
                     CharSequence text = holder.mContentView.getText();
                     if ("Demande de réservation de salle (Remplir Demande de réservation)".equals(text)) {
                         mFragment.displayFragmentSalle();
 
-                    } else if ("Demande attestation de présence (Remplir Demande d'attestation Présence)".equals(text)) {
+                    }
+                    else if ("Demande de Double Correction (Remplir la demandede double correction)".equals(text)) {
+                        mFragment.displayFragmentCorrection();
+                    }
+                    else if ("Demande attestation de présence (Remplir Demande d'attestation Présence)".equals(text)) {
                         mFragment.displayFragmentPresence();
 
-                    } else if ("Demande de Double Correction (Remplir la demandede double correction)".equals(text)) {
-                        Toast.makeText(v.getContext(), "Not ready yet", Toast.LENGTH_LONG).show();
                     }
                 }
             }

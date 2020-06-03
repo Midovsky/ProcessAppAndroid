@@ -12,4 +12,16 @@
         <item>@string/réunion</item>
         <item>@string/formation</item>
     </string-array>
+
+    <string-array name="type_epreuve">
+        <item>@string/ds</item>
+        <item>@string/examen</item>
+    </string-array>
+
+
+    <string-array name="session">
+        <item>@string/princ_sem1</item>
+        <item>@string/princ_sem1</item>
+        <item>@string/rattrapage</item>
+    </string-array>
 </resources>
