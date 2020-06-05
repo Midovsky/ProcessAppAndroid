@@ -6,13 +6,13 @@
     android:orientation="horizontal"
     tools:context=".ui.AttestationPresence">
 
-    <TextView
+<!--    <TextView
         android:id="@+id/tasuid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textAppearance="?attr/textAppearanceListItem" />-->
 
     <TextView
         android:id="@+id/item_number"
@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
+        android:gravity="center"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <Button
@@ -28,5 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
+        android:gravity="center"
         android:textAppearance="?attr/textAppearanceListItem" />
 </LinearLayout>

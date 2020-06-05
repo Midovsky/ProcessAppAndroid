@@ -26,6 +26,7 @@
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
                 android:text="CIN" />
 
             <EditText
@@ -49,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Nom" />
 
             <EditText
@@ -70,9 +72,10 @@
             <TextView
                 android:id="@+id/txtDate"
                 android:layout_width="90dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Date de naissance" />
 
             <EditText
@@ -97,6 +100,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Lieu de naissance" />
 
             <EditText
@@ -119,6 +123,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Niveau" />
 
             <EditText
@@ -141,6 +146,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Specialité" />
 
             <EditText
@@ -163,6 +169,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Groupe" />
 
             <EditText

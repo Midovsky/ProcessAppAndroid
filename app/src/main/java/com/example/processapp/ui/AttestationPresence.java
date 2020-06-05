@@ -21,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.processapp.R;
+import com.example.processapp.TaskRepo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -154,8 +155,8 @@ public class AttestationPresence extends Fragment {
 
                     Log.d("vvv", jsonObject.toString());
 
-                    PresenceTask presenceTask = new PresenceTask();
-                    presenceTask.execute(jsonObject.toString());
+                    TaskRepo taskRepo = new TaskRepo(getActivity());
+                    taskRepo.attestationPresence(jsonObject.toString());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -190,77 +191,5 @@ public class AttestationPresence extends Fragment {
         public void afterTextChanged(Editable s) {
         }
     };
-
-    public class PresenceTask extends AsyncTask<String, Integer, String> {
-
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/cases");
-                HttpURLConnection connection =
-                        (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-                connection.setConnectTimeout(6000);
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Authorization","Bearer "+token);
-                connection.setRequestProperty("Content-Type","application/json");
-                connection.connect();
-                try (OutputStream outputStream = new BufferedOutputStream(connection.getOutputStream()) ) {
-
-                    outputStream.write(params[0].getBytes());
-                    outputStream.flush();
-                }
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-
-
-                    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                        StringBuffer stringBuffer = new StringBuffer();
-                        String line;
-                        while ((line = bufferedReader.readLine()) != null) {
-                            stringBuffer.append(line+"/n");
-                        }
-                        connection.getInputStream().close();
-                        Log.d("response",stringBuffer.toString());
-
-                        return stringBuffer.toString();
-                    }
-
-                } else {
-                    Log.d("test2", String.valueOf(connection.getResponseMessage()));
-                    return "Error in connexion";
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-            navController.navigate(R.id.action_attestationPresence_to_nav_demande);
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-
-            super.onProgressUpdate(values);
-        }
-    }
 
 }

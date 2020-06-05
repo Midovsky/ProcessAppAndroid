@@ -1,6 +1,7 @@
 package com.example.processapp;
 
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,10 +16,14 @@ import android.widget.Toast;
 import com.example.processapp.model.Task;
 import com.example.processapp.ui.ReserveFragment;
 import com.example.processapp.ui.WkfFragment;
+import com.example.processapp.ui.login.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -34,8 +39,13 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     private AppBarConfiguration mAppBarConfiguration;
     private String token;
 
+     SharedPreferences sharedPref;
+    private Object WkfFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,9 +76,13 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
         token = result.getString("token", "no token found");
 
 
+
+
         //token= intent.getStringExtra("token");
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -106,6 +120,22 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+        if (id == R.id.action_logout) {
+            Intent intent = new Intent(NavigationActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 

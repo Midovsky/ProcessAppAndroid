@@ -26,6 +26,7 @@
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
                 android:text="CIN" />
 
             <EditText
@@ -49,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Niveau" />
 
             <EditText
@@ -71,6 +73,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Nom Etudiant" />
 
             <EditText
@@ -93,6 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Specialité" />
 
             <EditText
@@ -116,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Email" />
 
             <EditText
@@ -139,6 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Groupe" />
 
             <EditText
@@ -161,6 +167,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Matiere" />
 
             <EditText
@@ -183,6 +190,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Type Epreuve" />
 
             <Spinner
@@ -206,6 +214,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Session" />
 
             <Spinner
@@ -228,6 +237,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Enseignant" />
 
             <EditText
@@ -250,6 +260,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Commentaire" />
 
             <EditText

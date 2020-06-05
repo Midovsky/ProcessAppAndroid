@@ -20,22 +20,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.processapp.R;
+import com.example.processapp.TaskRepo;
 import com.example.processapp.model.Task;
 
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -69,6 +60,8 @@ public class WkfFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+         Log.d("ui","eee");
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -76,7 +69,7 @@ public class WkfFragment extends Fragment {
         SharedPreferences result = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
         token = result.getString("token","no token found");
 
-        Log.d("task",lTask.toString());
+      //  Log.d("task",lTask.toString());
 
     }
 
@@ -86,6 +79,7 @@ public class WkfFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wkf_list, container, false);
 
+        Log.d("nono",lTask.toString());
 
         return view;
     }
@@ -94,30 +88,55 @@ public class WkfFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        int i=0;
+        Log.d("task",lTask.toString());
+
+
+
         // Set the adapter
-        if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list);
+
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                recyclerView.setHasFixedSize(true);
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
+          TextView textView = view.findViewById(R.id.textView6);
 
 
             if (lTask.isEmpty()){
-                SearchProcessTask searchProcessTask = new SearchProcessTask();
-                searchProcessTask.execute();
+
+
+                Log.d("task",String.valueOf(i++));
+
+               TaskRepo taskRepo = new TaskRepo(getActivity());
+                taskRepo.possibleTasks();
+                lTask = taskRepo.getlTask();
+
+
+
+              /*  lTask.add(new Task("tas_uid","pro_title","pro_uid"));
+                lTask.add(new Task("tas_uid","pro_title","pro_uid"));
+                lTask.add(new Task("tas_uid","pro_title","pro_uid"));*/
 
             }
 
-            MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
-            recyclerView.setAdapter(myWkfRecyclerViewAdapter);
-            //myWkfRecyclerViewAdapter.notifyDataSetChanged();
+           // textView.setText(lTask.get(0).getPro_title());
 
-        }
+
+        MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
+        recyclerView.setAdapter(myWkfRecyclerViewAdapter);
+       // String s = (String) lTask.get(0).getPro_title();
+
+        // myWkfRecyclerViewAdapter.notifyDataSetChanged();
+
+
     }
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -171,74 +190,7 @@ public class WkfFragment extends Fragment {
         void onButtonClicked(Button demande);
     }
 
-    public class SearchProcessTask extends AsyncTask<Void, Integer, String> {
-        @Override
-        protected String doInBackground(Void... params) {
-            try {
 
-                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/case/start-cases");
-                HttpURLConnection connection =
-                        (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("Authorization","Bearer "+token);
-                connection.connect();
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-
-                    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                        StringBuffer stringBuffer = new StringBuffer();
-                        String line;
-                        while ((line = bufferedReader.readLine()) != null) {
-                            stringBuffer.append(line+"/n");
-                        }
-                        connection.getInputStream().close();
-                        Log.d("ttt",stringBuffer.toString());
-                        return stringBuffer.toString();
-                    }
-
-                } else {
-                    return "Error in connexion";
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-                Log.d("test1",s);
-
-            try {
-
-                JSONArray jsonArray = new JSONArray(s);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject obj = jsonArray.getJSONObject(i);
-                    String tas_uid = obj.getString("tas_uid");
-                    String pro_title = obj.getString("pro_title");
-                    String pro_uid = obj.getString("pro_uid");
-
-                    Task task = new Task(tas_uid,pro_title,pro_uid);
-
-                    lTask.add(task);
-                }
-                Log.d("test3",lTask.toString());
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
 }
 
 

@@ -25,7 +25,7 @@ import com.example.processapp.ui.login.LoginActivity;
  */
 public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Task> mValues;
+    private  List<Task> mValues;
     private final OnListFragmentInteractionListener mListener;
     private final WkfFragment mFragment;
 
@@ -48,8 +48,8 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mTasUidView.setText(mValues.get(position).getTas_uid());
-        holder.mIdView.setText(mValues.get(position).getPro_uid());
+       // holder.mTasUidView.setText(mValues.get(position).getTas_uid());
+        holder.mIdView.setText("Process Num "+String.valueOf(position+1));
         holder.mContentView.setText(mValues.get(position).getPro_title());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -97,13 +97,18 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
 
     @Override
     public int getItemCount() {
+
         return mValues.size();
+    }
+
+    public void setmValues(List<Task> mValues) {
+        this.mValues = mValues;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mTasUidView;
+     //   public final TextView mTasUidView;
         public final Button mContentView;
         public Task mItem;
 
@@ -111,7 +116,7 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
-            mTasUidView = (TextView) view.findViewById(R.id.tasuid);
+        //    mTasUidView = (TextView) view.findViewById(R.id.tasuid);
             mContentView = (Button) view.findViewById(R.id.content);
 
         }

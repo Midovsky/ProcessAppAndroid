@@ -1,21 +1,22 @@
 package com.example.processapp.model;
 
-public class Wkf {
+public class Case {
 
-    private String id;
     private String name;
+    private String state;
 
-    public Wkf(String id, String name) {
-        this.id = id;
+    public Case(String name, String state) {
         this.name = name;
+        this.state = state;
+
     }
 
-    public String getId() {
-        return id;
+    public String getState() {
+        return state;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getName() {
@@ -28,8 +29,8 @@ public class Wkf {
 
     @Override
     public String toString() {
-        return "Wkf{" +
-                "id='" + id + '\'' +
+        return "Case{" +
+                "state='" + state + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

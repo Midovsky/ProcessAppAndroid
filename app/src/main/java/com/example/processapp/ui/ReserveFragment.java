@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.processapp.NavigationActivity;
 import com.example.processapp.R;
+import com.example.processapp.TaskRepo;
 import com.example.processapp.ui.login.LoginActivity;
 
 import org.json.JSONArray;
@@ -119,8 +120,7 @@ public class ReserveFragment extends Fragment {
             public void onClick(View v) {
                 int radioId = rdGrp.getCheckedRadioButtonId();
                 RadioButton rdb = getActivity().findViewById(radioId);
-                Toast.makeText(getContext(), rdb.getText(),
-                        Toast.LENGTH_SHORT).show();
+
                 Log.d("vb", "vb");
 
 
@@ -149,8 +149,9 @@ public class ReserveFragment extends Fragment {
 
                     Log.d("vvv", jsonObject.toString());
 
-                    ReserveClassTask reserveClassTask = new ReserveClassTask();
-                    reserveClassTask.execute(jsonObject.toString());
+                   TaskRepo taskRepo = new TaskRepo(getActivity());
+
+                    taskRepo.reserveSalle(jsonObject.toString());
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -186,77 +187,5 @@ public class ReserveFragment extends Fragment {
     };
 
 
-    public class ReserveClassTask extends AsyncTask<String, Integer, String> {
 
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/cases");
-                HttpURLConnection connection =
-                        (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-                connection.setConnectTimeout(6000);
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Authorization","Bearer "+token);
-                connection.setRequestProperty("Content-Type","application/json");
-                connection.connect();
-                try (OutputStream outputStream = new BufferedOutputStream(connection.getOutputStream()) ) {
-
-                    outputStream.write(params[0].getBytes());
-                    outputStream.flush();
-                }
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-
-
-                    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                        StringBuffer stringBuffer = new StringBuffer();
-                        String line;
-                        while ((line = bufferedReader.readLine()) != null) {
-                            stringBuffer.append(line+"/n");
-                        }
-                        connection.getInputStream().close();
-                        Log.d("response",stringBuffer.toString());
-
-                        return stringBuffer.toString();
-                    }
-
-                } else {
-                    Log.d("test2", String.valueOf(connection.getResponseMessage()));
-                    return "Error in connexion";
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-            navController.navigate(R.id.action_reserveFragment2_to_nav_demande);
-
-
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-
-            super.onProgressUpdate(values);
-        }
-    }
 }

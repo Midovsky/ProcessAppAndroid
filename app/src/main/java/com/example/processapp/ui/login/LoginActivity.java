@@ -94,9 +94,9 @@ public class LoginActivity extends AppCompatActivity {
             loadingProgressBar.setProgress(0);
 
             progressDialog.setTitle("Please wait");
-            progressDialog.setMessage("Content loading");
+            progressDialog.setMessage("Connexion en cours");
             progressDialog.setCancelable(false);
-          //  progressDialog.show();
+            progressDialog.show();
         }
 
         @Override
@@ -125,6 +125,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoginActivity.this, NavigationActivity.class) ;
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                     intent.putExtra("token", res);
                     getApplicationContext().startActivity(intent);
                 }
@@ -186,80 +188,10 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
             return null;
         }
 
 
-        //        private final String mEmail;
-//        private final String mPassword;
-//        UserLoginTask(String email, String password) {
-//            mEmail = email;
-//            mPassword = password;
-//        }
-//
-//        public UserLoginTask() {
-//        mEmail = "";
-//        mPassword = "";
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... params) {
-//
-//            OkHttpClient client = new OkHttpClient();
-//
-//            MediaType mediaType = MediaType.parse("application/json");
-//            RequestBody body = RequestBody.create(mediaType,
-//                    "{\n\t\"grant_type\":\"pswrd\"" +
-//                            ",\n\t\"mobile\": \"" + mEmail + "\"," +
-//                            "\n\t\"pswrd\": \"" + mPassword + "\"," +
-//                            "\n\t\"baction\": \"register_user\"," +
-//                            "\", \n\t\"scope\": \"*\", ");
-//            Request request = new Request.Builder()
-//                    .url("http://androindian.com/apps/example_app/api.php")
-//                    .post(body)
-//                    .addHeader("Content-Type", "application/json")
-//                    .build();
-//            try {
-//                Response response = client.newCall(request).execute();
-//                if (response.isSuccessful()) {
-//                    String resp = response.body().string();
-//                    JSONObject object = (JSONObject) new JSONTokener(resp).nextValue();
-//                    String success = (String) object.get("response");
-//                    return resp;
-//                } else {
-//                    return "ssssssss";
-//                }
-//            } catch (JSONException ex) {
-//                ex.printStackTrace();
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//            return  "sdqdqd";
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            try {
-//                JSONObject test = new JSONObject(s.toString());
-//                JSONObject object = (JSONObject) new JSONTokener(s).nextValue();
-//                String success = (String) object.get("response");
-//
-//                if (success.equalsIgnoreCase("success")){
-//                    Toast.makeText(LoginActivity.this, "welcome", Toast.LENGTH_LONG).show();
-//                }
-//                else  {
-//                    Toast.makeText(LoginActivity.this, "error", Toast.LENGTH_LONG).show();
-//                }
-//
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-//        }
 
     }
 
