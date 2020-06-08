@@ -31,7 +31,7 @@ import java.util.List;
 public class SuiviFragment extends Fragment {
 
     private SuiviViewModel suiviViewModel;
-    private List<Case> cases = new ArrayList<Case>();
+    static List<Case> cases = new ArrayList<Case>();
     private String token;
 
     @Override
@@ -48,12 +48,6 @@ public class SuiviFragment extends Fragment {
                 ViewModelProviders.of(this).get(SuiviViewModel.class);
         View root = inflater.inflate(R.layout.fragment_suivi, container, false);
 
-      /*  suiviViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
         return root;
     }
 

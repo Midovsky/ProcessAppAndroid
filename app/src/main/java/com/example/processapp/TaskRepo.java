@@ -33,7 +33,6 @@ import java.util.List;
 
 
 public class TaskRepo {
-    private LiveData<List<Task>> allNotes;
     private String token;
     private  Activity activity;
 
@@ -44,6 +43,7 @@ public class TaskRepo {
 
 
     public List<Task> getlTask() {
+
         return lTask;
     }
 
@@ -208,6 +208,7 @@ public class TaskRepo {
                     lTask.add(task);
                 }
                 Log.d("test3",lTask.toString());
+
 
 
             } catch (JSONException e) {

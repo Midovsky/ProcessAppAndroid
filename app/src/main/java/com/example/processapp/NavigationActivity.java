@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -40,13 +42,22 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     private String token;
 
      SharedPreferences sharedPref;
-    private Object WkfFragment;
+    private String mFName;
 
+    WkfFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+/*        FragmentManager fm = getSupportFragmentManager();
+        if (savedInstanceState != null) {
+
+            mFragment = (WkfFragment) fm.getFragment(savedInstanceState, "TABLE_FRAGMENT");
+            mFName = savedInstanceState.getString("FNAMETAG");
+        }*/
+
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,11 +89,63 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
 
 
 
+
+       /* navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction ft = fragmentManager.beginTransaction();
+
+                        // TODO: do stuff
+
+                        int id = menuItem.getItemId();
+
+                        if (id == R.id.nav_demande) {
+                            Log.d("sss","sss");
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .addToBackStack(null)
+                                    .replace(R.id.nav_host_fragment, new WkfFragment())
+                                    .commit();
+                          //  ft.replace(R.id.nav_host_fragment, new WkfFragment()).commit();
+
+                        }
+
+                        if (id == R.id.nav_suivi) {
+
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .addToBackStack(null)
+                                    .commit();
+                        }
+
+                        // You need this line to handle the navigation
+                        boolean handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
+                        if (handled) {
+                            ViewParent parent = navigationView.getParent();
+                            if (parent instanceof DrawerLayout) {
+                                ((DrawerLayout) parent).closeDrawer(navigationView);
+                            }
+                        }
+
+                        return handled;
+                    }
+                });
+*/
+
         //token= intent.getStringExtra("token");
 
     }
 
 
+
+/*    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getSupportFragmentManager().putFragment(outState,"TABLE_FRAGMENT",mFragment);
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,6 +195,8 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
             finish();
 
         }
+
+
 
 
         return super.onOptionsItemSelected(item);

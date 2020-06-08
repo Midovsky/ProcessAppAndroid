@@ -40,6 +40,8 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        Log.d("adap","adap");
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_wkf, parent, false);
         return new ViewHolder(view);
@@ -126,4 +128,6 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
+
+
 }

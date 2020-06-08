@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -44,8 +45,10 @@ public class WkfFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
 
     private String token;
-    public List<Task> lTask = new ArrayList<Task>() ;
-
+    static List<Task> lTask = new ArrayList<Task>() ;
+    View myView = null;
+    TaskRepo taskRepo;
+    private String mFName;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -54,13 +57,18 @@ public class WkfFragment extends Fragment {
     public WkfFragment() {
     }
 
-
+/*    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("FNAMETAG", mFName);
+        super.onSaveInstanceState(outState);
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         Log.d("ui","eee");
+
+         Log.d("oncreate",lTask.toString());
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -77,11 +85,21 @@ public class WkfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_wkf_list, container, false);
 
-        Log.d("nono",lTask.toString());
+        if (myView == null) {
+            View view = inflater.inflate(R.layout.fragment_wkf_list, container, false);
 
-        return view;
+            Log.d("nono",lTask.toString());
+
+            myView = view;
+            return myView;
+
+        }
+
+        else{
+            return myView;
+
+        }
     }
 
     @Override
@@ -90,7 +108,6 @@ public class WkfFragment extends Fragment {
 
         int i=0;
         Log.d("task",lTask.toString());
-
 
 
         // Set the adapter
@@ -104,7 +121,7 @@ public class WkfFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-          TextView textView = view.findViewById(R.id.textView6);
+
 
 
             if (lTask.isEmpty()){
@@ -112,10 +129,11 @@ public class WkfFragment extends Fragment {
 
                 Log.d("task",String.valueOf(i++));
 
-               TaskRepo taskRepo = new TaskRepo(getActivity());
+                taskRepo = new TaskRepo(getActivity());
                 taskRepo.possibleTasks();
                 lTask = taskRepo.getlTask();
 
+                Log.d("dafuq1",lTask.toString());
 
 
               /*  lTask.add(new Task("tas_uid","pro_title","pro_uid"));
@@ -124,12 +142,17 @@ public class WkfFragment extends Fragment {
 
             }
 
-           // textView.setText(lTask.get(0).getPro_title());
+           //textView.setText(lTask.get(0).getPro_title());
 
+
+        Log.d("dafuq2",lTask.toString());
 
         MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
         recyclerView.setAdapter(myWkfRecyclerViewAdapter);
-       // String s = (String) lTask.get(0).getPro_title();
+
+        Log.d("count",String.valueOf(myWkfRecyclerViewAdapter.getItemCount()));
+
+        // String s = (String) lTask.get(0).getPro_title();
 
         // myWkfRecyclerViewAdapter.notifyDataSetChanged();
 
@@ -190,7 +213,26 @@ public class WkfFragment extends Fragment {
         void onButtonClicked(Button demande);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("resume","resume");
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Log.d("destroy","destroy");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("pause","pause");
+
+    }
 }
 
 
