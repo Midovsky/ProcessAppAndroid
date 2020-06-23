@@ -30,7 +30,6 @@ import java.util.List;
 
 public class SuiviFragment extends Fragment {
 
-    private SuiviViewModel suiviViewModel;
     static List<Case> cases = new ArrayList<Case>();
     private String token;
 
@@ -44,8 +43,6 @@ public class SuiviFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        suiviViewModel =
-                ViewModelProviders.of(this).get(SuiviViewModel.class);
         View root = inflater.inflate(R.layout.fragment_suivi, container, false);
 
         return root;
@@ -72,18 +69,29 @@ public class SuiviFragment extends Fragment {
         ParticipatedCasesAdapter adapter = new ParticipatedCasesAdapter();
         recyclerView.setAdapter(adapter);
         adapter.setCases(cases);
+        Log.d("count2",String.valueOf(adapter.getItemCount()));
 
 
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onPause() {
+        super.onPause();
+        Log.d("pause","pause");
 
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onStop() {
+        super.onStop();
+        Log.d("stop","stop");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("destroy","destroy");
+
     }
 }

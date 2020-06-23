@@ -18,17 +18,11 @@
             android:id="@+id/action_nav_demande_to_nav_suivi"
             app:destination="@id/nav_suivi" />
         <action
-            android:id="@+id/action_nav_demande_to_nav_autre2"
-            app:destination="@id/nav_autre2" />
-        <action
             android:id="@+id/action_nav_demande_to_reserveFragment2"
             app:destination="@id/reserveFragment2" />
         <action
             android:id="@+id/action_nav_demande_to_attestationPresence"
             app:destination="@id/attestationPresence" />
-        <action
-            android:id="@+id/action_nav_demande_to_nav_autre1"
-            app:destination="@id/nav_autre1" />
         <action
             android:id="@+id/action_nav_demande_to_doubleCorrection"
             app:destination="@id/doubleCorrection" />
@@ -53,17 +47,6 @@
         android:label="@string/menu_suivi"
         tools:layout="@layout/fragment_suivi" />
 
-    <fragment
-        android:id="@+id/nav_autre1"
-        android:name="com.example.processapp.ui.autre1.Autre1Fragment"
-        android:label="@string/menu_autre1"
-        tools:layout="@layout/fragment_autre1" />
-
-    <fragment
-        android:id="@+id/nav_autre2"
-        android:name="com.example.processapp.ui.autre2.Autre2Fragment"
-        android:label="Autre 2"
-        tools:layout="@layout/fragment_autre2" />
     <fragment
         android:id="@+id/reserveFragment2"
         android:name="com.example.processapp.ui.ReserveFragment"

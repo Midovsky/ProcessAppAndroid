@@ -90,6 +90,10 @@ public class MyWkfRecyclerViewAdapter extends RecyclerView.Adapter<MyWkfRecycler
                         mFragment.displayFragmentPresence();
 
                     }
+                    else  {
+                        Toast.makeText(holder.mView.getContext(), "pas d'action", Toast.LENGTH_LONG).show();
+                    }
+
                 }
             }
         });

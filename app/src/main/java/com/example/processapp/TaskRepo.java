@@ -350,7 +350,7 @@ public class TaskRepo {
         protected String doInBackground(String... params) {
             try {
 
-                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/cases/participated?limit=10");
+                URL url = new URL("http://process.isiforge.tn/api/1.0/isi/cases/participated?limit=30");
                 HttpURLConnection connection =
                         (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");

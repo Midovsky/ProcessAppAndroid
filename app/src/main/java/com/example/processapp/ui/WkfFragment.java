@@ -48,7 +48,6 @@ public class WkfFragment extends Fragment {
     static List<Task> lTask = new ArrayList<Task>() ;
     View myView = null;
     TaskRepo taskRepo;
-    private String mFName;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -57,11 +56,6 @@ public class WkfFragment extends Fragment {
     public WkfFragment() {
     }
 
-/*    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString("FNAMETAG", mFName);
-        super.onSaveInstanceState(outState);
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,7 +101,7 @@ public class WkfFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         int i=0;
-        Log.d("task",lTask.toString());
+        Log.d("taskwkf",lTask.toString());
 
 
         // Set the adapter
@@ -122,8 +116,6 @@ public class WkfFragment extends Fragment {
             }
 
 
-
-
             if (lTask.isEmpty()){
 
 
@@ -133,28 +125,20 @@ public class WkfFragment extends Fragment {
                 taskRepo.possibleTasks();
                 lTask = taskRepo.getlTask();
 
-                Log.d("dafuq1",lTask.toString());
+             //   Log.d("ww1",lTask.toString());
 
 
-              /*  lTask.add(new Task("tas_uid","pro_title","pro_uid"));
-                lTask.add(new Task("tas_uid","pro_title","pro_uid"));
-                lTask.add(new Task("tas_uid","pro_title","pro_uid"));*/
 
             }
 
-           //textView.setText(lTask.get(0).getPro_title());
 
 
-        Log.d("dafuq2",lTask.toString());
+       // Log.d("ww2",lTask.toString());
 
         MyWkfRecyclerViewAdapter myWkfRecyclerViewAdapter = new MyWkfRecyclerViewAdapter(lTask,mListener, this);
         recyclerView.setAdapter(myWkfRecyclerViewAdapter);
 
         Log.d("count",String.valueOf(myWkfRecyclerViewAdapter.getItemCount()));
-
-        // String s = (String) lTask.get(0).getPro_title();
-
-        // myWkfRecyclerViewAdapter.notifyDataSetChanged();
 
 
     }
@@ -213,26 +197,7 @@ public class WkfFragment extends Fragment {
         void onButtonClicked(Button demande);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("resume","resume");
 
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        Log.d("destroy","destroy");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("pause","pause");
-
-    }
 }
 
 

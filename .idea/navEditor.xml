@@ -50,13 +50,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="loginActivity2">
+                  <entry key="loginActivity">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-781" />
-                            <option name="y" value="101" />
+                            <option name="x" value="-734" />
+                            <option name="y" value="571" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -107,7 +107,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_nav_demande_to_loginActivity2">
+                            <entry key="action_nav_demande_to_loginActivity">
                               <value>
                                 <LayoutPositions />
                               </value>

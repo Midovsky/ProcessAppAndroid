@@ -1,5 +1,6 @@
 package com.example.processapp.ui;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ public class ParticipatedCasesAdapter extends RecyclerView.Adapter<ParticipatedC
     @NonNull
     @Override
     public CaseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.d("adap2","adap");
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.participated_case, parent, false);
         return new CaseHolder(view);

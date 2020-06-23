@@ -16,20 +16,13 @@ import com.example.processapp.R;
 
 public class DemandesFragment extends Fragment {
 
-    private DemandesViewModel demandesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        demandesViewModel =
-                ViewModelProviders.of(this).get(DemandesViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_demandes, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        demandesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

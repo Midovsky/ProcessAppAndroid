@@ -23,11 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -42,46 +38,30 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
     private String token;
 
      SharedPreferences sharedPref;
-    private String mFName;
 
-    WkfFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-/*        FragmentManager fm = getSupportFragmentManager();
-        if (savedInstanceState != null) {
-
-            mFragment = (WkfFragment) fm.getFragment(savedInstanceState, "TABLE_FRAGMENT");
-            mFName = savedInstanceState.getString("FNAMETAG");
-        }*/
 
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, token, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations. (pour être considiérée dans le hamburger)
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_demande, R.id.nav_suivi, R.id.nav_autre1, R.id.nav_autre2)
+                R.id.nav_demande, R.id.nav_suivi)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Intent intent = getIntent();
 
         SharedPreferences result = getSharedPreferences("myPref", Context.MODE_PRIVATE);
         token = result.getString("token", "no token found");
@@ -90,62 +70,8 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
 
 
 
-       /* navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction ft = fragmentManager.beginTransaction();
-
-                        // TODO: do stuff
-
-                        int id = menuItem.getItemId();
-
-                        if (id == R.id.nav_demande) {
-                            Log.d("sss","sss");
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .addToBackStack(null)
-                                    .replace(R.id.nav_host_fragment, new WkfFragment())
-                                    .commit();
-                          //  ft.replace(R.id.nav_host_fragment, new WkfFragment()).commit();
-
-                        }
-
-                        if (id == R.id.nav_suivi) {
-
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .addToBackStack(null)
-                                    .commit();
-                        }
-
-                        // You need this line to handle the navigation
-                        boolean handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
-                        if (handled) {
-                            ViewParent parent = navigationView.getParent();
-                            if (parent instanceof DrawerLayout) {
-                                ((DrawerLayout) parent).closeDrawer(navigationView);
-                            }
-                        }
-
-                        return handled;
-                    }
-                });
-*/
-
-        //token= intent.getStringExtra("token");
-
     }
 
-
-
-/*    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        getSupportFragmentManager().putFragment(outState,"TABLE_FRAGMENT",mFragment);
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -192,11 +118,14 @@ public class NavigationActivity extends AppCompatActivity implements WkfFragment
             Intent intent = new Intent(NavigationActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            sharedPref = getSharedPreferences("myPref",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("token",null);
+            editor.commit();
+
             finish();
 
         }
-
-
 
 
         return super.onOptionsItemSelected(item);
